@@ -17,3 +17,14 @@
 [2026-06-10 12:48:31] [INFO] Network eth0 RX:6782.1MB TX:62.6MB
 [2026-06-10 12:48:31] [INFO] Processes: 22
 [2026-06-10 12:48:31] [INFO] Check complete
+[2026-06-10 12:54:19] [INFO] CPU: 42%
+[2026-06-10 12:54:19] [INFO] RAM: 22% (1775MB/7944MB)
+[2026-06-10 12:54:19] [INFO] Load: 1.21 Cores: 2
+[2026-06-10 12:54:19] [INFO] Disk /: 33%
+[2026-06-10 12:54:19] [INFO] Disk /dev/shm: 0%
+[2026-06-10 12:54:19] [INFO] Disk /vscode: 74%
+[2026-06-10 12:54:19] [INFO] Disk /tmp: 6%
+[2026-06-10 12:54:19] [INFO] Disk /workspaces: 33%
+[2026-06-10 12:54:19] [INFO] Network eth0 RX:6816.0MB TX:66.1MB
+[2026-06-10 12:54:19] [INFO] Processes: 22
+[2026-06-10 12:54:19] [INFO] Check complete
