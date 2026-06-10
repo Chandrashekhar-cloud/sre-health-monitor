@@ -28,3 +28,20 @@
 [2026-06-10 12:54:19] [INFO] Network eth0 RX:6816.0MB TX:66.1MB
 [2026-06-10 12:54:19] [INFO] Processes: 22
 [2026-06-10 12:54:19] [INFO] Check complete
+[2026-06-10 14:30:08] [INFO] CPU: 10%
+[2026-06-10 14:30:08] [ALERT] CPU breach: 10%
+[2026-06-10 14:30:08] [INFO] RAM: 21% (1708MB/7944MB)
+[2026-06-10 14:30:09] [ALERT] RAM breach: 21%
+[2026-06-10 14:30:09] [INFO] Load: 0.17 Cores: 2
+[2026-06-10 14:30:09] [INFO] Disk /: 33%
+[2026-06-10 14:30:09] [ALERT] Disk breach: / at 33%
+[2026-06-10 14:30:09] [INFO] Disk /dev/shm: 0%
+[2026-06-10 14:30:09] [INFO] Disk /vscode: 75%
+[2026-06-10 14:30:10] [ALERT] Disk breach: /vscode at 75%
+[2026-06-10 14:30:10] [INFO] Disk /workspaces: 33%
+[2026-06-10 14:30:10] [ALERT] Disk breach: /workspaces at 33%
+[2026-06-10 14:30:10] [INFO] Disk /tmp: 4%
+[2026-06-10 14:30:10] [ALERT] Disk breach: /tmp at 4%
+[2026-06-10 14:30:10] [INFO] Network eth0 RX:5563.9MB TX:38.0MB
+[2026-06-10 14:30:10] [INFO] Processes: 21
+[2026-06-10 14:30:10] [INFO] Check complete
