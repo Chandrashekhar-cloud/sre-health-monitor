@@ -176,7 +176,6 @@ Network (eth0) : RX:6816.0MB TX:66.1MB
 --- Processes ---
 Processes : 22 running
 ---
-
 # 🎯 Resume Highlights
 
 * Built an automated Linux health monitoring system using Bash scripting.
