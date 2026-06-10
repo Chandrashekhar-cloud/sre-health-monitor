@@ -26,7 +26,7 @@ The project continuously monitors system health, generates daily reports, logs m
 
 ✅ Process Monitoring
 
-✅ Slack Alert Integration
+✅ Real-Time Slack Alert Notifications
 
 ✅ HTML Dashboard Reports
 
@@ -99,17 +99,31 @@ sre-health-monitor/
 
 ## Terminal Monitoring Dashboard
 
+Live terminal dashboard displaying CPU, RAM, Disk Usage, Load Average, Network Statistics, and Running Processes.
+
 ![Monitor Output](screenshots/monitor-output.png)
 
 ---
 
 ## HTML Health Report
 
+Automatically generated HTML dashboard providing a visual overview of system health metrics and recent logs.
+
 ![HTML Report](screenshots/html-report.png)
 
 ---
 
+## Slack Alert Notifications
+
+Real-time alerts generated through Slack Webhooks whenever configured CPU, RAM, or Disk thresholds are exceeded.
+
+![Slack Alert](screenshots/slack-alert.png)
+
+---
+
 ## GitHub Repository
+
+Source code repository containing monitoring scripts, configuration files, report generation modules, alert integrations, and project documentation.
 
 ![GitHub Repository](screenshots/github-repo.png)
 
@@ -179,15 +193,27 @@ Network (eth0) : RX:6816.0MB TX:66.1MB
 --- Processes ---
 Processes : 22 running
 ```
-
----
 # 🎯 Resume Highlights
 
-* Built an automated Linux health monitoring system using Bash scripting.
-* Implemented real-time system metric collection and threshold-based alerting.
-* Developed HTML dashboards for system health visualization.
-* Integrated Slack notifications for operational alerting.
-* Designed production-style logging and monitoring workflows.
+- Built an automated Linux health monitoring solution using Bash scripting.
+- Implemented real-time monitoring for CPU, RAM, Disk Usage, Load Average, Network Statistics, and Running Processes.
+- Developed HTML dashboards for system health visualization and reporting.
+- Integrated Slack Webhook notifications for real-time CPU, RAM, and Disk threshold alerts.
+- Designed structured logging and automated report generation workflows.
+- Implemented configurable monitoring thresholds for production-style alerting.
+- Developed and tested the solution in a Linux environment using GitHub Codespaces.
+
+---
+# 🚀 Future Enhancements
+
+- Docker Container Monitoring
+- Kubernetes Health Monitoring
+- Prometheus Metrics Export
+- Grafana Dashboard Integration
+- Microsoft Teams Alert Integration
+- Telegram Alert Integration
+- Multi-Server Monitoring
+- Historical Trend Analysis
 
 ---
 
