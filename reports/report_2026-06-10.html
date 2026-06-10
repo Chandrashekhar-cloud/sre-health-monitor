@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><title>SRE Health Report</title>
+<style>
+body{background:#0d1117;color:#c9d1d9;font-family:monospace;padding:24px;margin:0}
+h1{color:#58a6ff;border-bottom:1px solid #30363d;padding-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;text-align:center}
+.val{font-size:48px;font-weight:bold;margin:10px 0}
+.lbl{color:#8b949e;font-size:13px}
+.log{background:#161b22;padding:16px;border-radius:8px;overflow:auto;max-height:280px;font-size:12px}
+footer{color:#8b949e;font-size:11px;margin-top:20px}
+</style></head><body>
+
+<h1>Linux SRE Health Report</h1>
+
+<p>Host: <strong>CS</strong> | Generated: <strong>2026-06-10 18:01:48</strong></p>
+
+<div class="grid">
+<div class="card"><div class="lbl">CPU Usage</div>
+<div class="val" style="color:#3fb950">%</div>
+<div class="lbl">Threshold: 80%</div></div>
+
+<div class="card"><div class="lbl">RAM Usage</div>
+<div class="val" style="color:#3fb950">%</div>
+<div class="lbl">MB / MB</div></div>
+
+<div class="card"><div class="lbl">Disk Usage</div>
+<div class="val" style="color:#3fb950">7%</div>
+<div class="lbl">Threshold: 90%</div></div>
+</div>
+
+<div class="grid">
+<div class="card"><div class="lbl">Load Average</div>
+<div class="val" style="color:#58a6ff"></div></div>
+
+<div class="card"><div class="lbl">Processes</div>
+<div class="val" style="color:#d2a8ff">7</div></div>
+
+<div class="card"><div class="lbl">Status</div>
+<div class="val" style="color:#3fb950">OK</div>
+<div class="lbl">Monitor Active</div></div>
+</div>
+
+<h2 style="color:#3fb950">Recent Logs</h2>
+
+<div class="log"><pre>[2026-06-10 18:00:51] [INFO] CPU: %
+[2026-06-10 18:00:51] [INFO] RAM: % (MB/MB)
+[2026-06-10 18:00:52] [INFO] Load:  Cores: 4
+[2026-06-10 18:00:52] [INFO] Disk /: 7%
+[2026-06-10 18:00:52] [INFO] Disk /c: 47%
+[2026-06-10 18:00:52] [INFO] Network  RX:0.0MB TX:0.0MB
+[2026-06-10 18:00:52] [INFO] Processes: 7
+[2026-06-10 18:00:53] [INFO] Check complete</pre></div>
+
+<footer>Linux SRE Health Monitor | github.com/Chandrashekhar-cloud/sre-health-monitor</footer>
+
+</body></html>
