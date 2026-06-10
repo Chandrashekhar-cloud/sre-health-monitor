@@ -157,23 +157,24 @@ chmod +x *.sh
 
 ---
 
-# 📊 Sample Output
+# 📊 Sample Output================================================
+ Linux SRE Health Monitor
+ Host: codespaces-f4661b
+================================================
 
-```bash
-CPU Usage : 4%
-RAM Usage : 23%
-Load Average : 7.35
+--- System Metrics ---
+CPU Usage : 42% [OK]
+RAM Usage : 22% (1775MB/7944MB) [OK]
+Load Average : 1.21 (2 cores)
 
-Disk Usage :
-/ : 33%
+--- Storage ---
+/ : 33% [OK]
 
-Network (eth0) :
-RX:6782MB TX:62MB
+--- Network ---
+Network (eth0) : RX:6816.0MB TX:66.1MB
 
-Processes :
-22 running
-```
-
+--- Processes ---
+Processes : 22 running
 ---
 
 # 🎯 Resume Highlights
