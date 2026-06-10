@@ -88,6 +88,7 @@ sre-health-monitor/
 ├── screenshots/
 │   ├── monitor-output.png
 │   ├── html-report.png
+│   ├── slack-alert.png
 │   └── github-repo.png
 │
 └── README.md
