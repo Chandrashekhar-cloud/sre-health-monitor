@@ -157,7 +157,10 @@ chmod +x *.sh
 
 ---
 
-# 📊 Sample Output================================================
+# 📊 Sample Output
+
+```text
+================================================
  Linux SRE Health Monitor
  Host: codespaces-f4661b
 ================================================
@@ -175,6 +178,8 @@ Network (eth0) : RX:6816.0MB TX:66.1MB
 
 --- Processes ---
 Processes : 22 running
+```
+
 ---
 # 🎯 Resume Highlights
 
