@@ -226,4 +226,4 @@ GitHub: https://github.com/Chandrashekhar-cloud
 
 ---
 
-⭐ If you found this project useful, consider giving it a star
+⭐ If you found this project useful, consider giving it a star.
