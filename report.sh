@@ -1,33 +1,48 @@
 #!/bin/bash
 
 # SRE Health Monitor - HTML Report Generator
-
+# shellcheck disable=SC1091
 source "$(dirname "$0")/config.sh"
 
 generate_report() {
 
-local ts=$(date "+%Y-%m-%d %H:%M:%S")
-local date=$(date +%Y-%m-%d)
-local report="$REPORT_DIR/report_${date}.html"
+local ts cpu ram_t ram_u ram_p disk load procs report
 
-local cpu=$(top -bn1 | grep "Cpu(s)" | awk "{print int(\$2)}")
+ts=$(TZ=Asia/Kolkata date "+%Y-%m-%d %H:%M:%S IST")
+cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print int($2)}')
+ram_t=$(free -m | awk '/^Mem:/{print $2}')
+ram_u=$(free -m | awk '/^Mem:/{print $3}')
+ram_p=$(echo "$ram_u $ram_t" | awk '{printf "%d", ($1/$2)*100}')
+disk=$(df / | awk 'NR==2{print $5}' | tr -d "%")
+load=$(uptime | awk -F"load average:" '{print $2}' | cut -d, -f1 | tr -d " ")
+procs=$(ps aux | wc -l)
 
-local ram_t=$(free -m | awk "/^Mem:/{print \$2}")
-local ram_u=$(free -m | awk "/^Mem:/{print \$3}")
-local ram_p=$(echo "$ram_u $ram_t" | awk "{printf \"%d\", (\$1/\$2)*100}")
+if [ "$cpu" -ge 80 ]; then
+    cpu_col="#f78166"
+elif [ "$cpu" -ge 60 ]; then
+    cpu_col="#e3b341"
+else
+    cpu_col="#3fb950"
+fi
 
-local disk=$(df / | awk "NR==2{print \$5}" | tr -d "%")
+if [ "$ram_p" -ge 85 ]; then
+    ram_col="#f78166"
+elif [ "$ram_p" -ge 70 ]; then
+    ram_col="#e3b341"
+else
+    ram_col="#3fb950"
+fi
 
-local load=$(uptime | awk -F"load average:" "{print \$2}" | cut -d, -f1 | tr -d " ")
-
-local procs=$(ps aux | wc -l)
-
-cpu_col=$([ "$cpu" -ge 80 ] && echo "#f78166" || ([ "$cpu" -ge 60 ] && echo "#e3b341" || echo "#3fb950"))
-ram_col=$([ "$ram_p" -ge 85 ] && echo "#f78166" || ([ "$ram_p" -ge 70 ] && echo "#e3b341" || echo "#3fb950"))
-disk_col=$([ "$disk" -ge 90 ] && echo "#f78166" || ([ "$disk" -ge 75 ] && echo "#e3b341" || echo "#3fb950"))
+if [ "$disk" -ge 90 ]; then
+    disk_col="#f78166"
+elif [ "$disk" -ge 75 ]; then
+    disk_col="#e3b341"
+else
+    disk_col="#3fb950"
+fi
 
 mkdir -p "$REPORT_DIR"
-
+report="$REPORT_DIR/report_$(date +%Y-%m-%d).html"
 cat > "$report" << HTMLEOF
 <!DOCTYPE html><html><head><title>SRE Health Report</title>
 <style>
@@ -81,6 +96,7 @@ footer{color:#8b949e;font-size:11px;margin-top:20px}
 HTMLEOF
 
 echo "Report generated: $report"
+explorer.exe "$(wslpath -w "$report")"
 }
 
 generate_report
