@@ -68,50 +68,51 @@ This project automates Linux system health monitoring through Bash scripts, prov
 - Linux command-line utilities.
 
 ---
-
 ## 🏗️ System Architecture
 
-    Linux System
-         |
-         v
-      monitor.sh
-         |
-    +----+----+----+
-    |    |    |    |
-    v    v    v    v
-   CPU  RAM  Disk Load
-    |    |    |    |
-    +----+----+----+
-         |
-         v
-    Network Statistics
-         |
-         v
-    Process Monitoring
-         |
-         v
-       alert.sh
-         |
-    +----+----+
-    |         |
-    v         v
-  Dry-Run  Slack Webhook
-    |         |
-    +----+----+
-         |
-         v
-    Alert Cooldown
-         |
-         v
-      report.sh
-         |
-         v
-    HTML Health Report
-         |
-         v
-      health.log
-
----
+```text
+                  Linux System
+                       |
+                       v
+                  monitor.sh
+                       |
+          +------------+------------+
+          |            |            |
+          v            v            v
+         CPU          RAM          Disk
+      Monitoring   Monitoring   Monitoring
+          |            |            |
+          +------------+------------+
+                       |
+             +---------+---------+
+             |         |         |
+             v         v         v
+           Load     Network   Processes
+        Monitoring Statistics Monitoring
+             |         |         |
+             +---------+---------+
+                       |
+                       v
+                    alert.sh
+                       |
+              +--------+--------+
+              |                 |
+              v                 v
+           Dry-Run         Slack Webhook
+              |                 |
+              +--------+--------+
+                       |
+                       v
+                 Alert Cooldown
+                       |
+                       v
+                   report.sh
+                       |
+                       v
+               HTML Health Report
+                       |
+                       v
+                  health.log
 
 ## 📂 Project Structure
 
