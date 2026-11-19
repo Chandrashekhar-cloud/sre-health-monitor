@@ -68,6 +68,7 @@ This project automates Linux system health monitoring through Bash scripts, prov
 - Linux command-line utilities.
 
 ---
+
 ## 🏗️ System Architecture
 
 ```text
@@ -113,35 +114,39 @@ This project automates Linux system health monitoring through Bash scripts, prov
                        |
                        v
                   health.log
-    ---
+```
+
+---
 
 ## 📂 Project Structure
 
-    sre-health-monitor/
-    │
-    ├── config/
-    │   └── thresholds.conf.example
-    │
-    ├── monitor.sh
-    ├── alert.sh
-    ├── report.sh
-    ├── install.sh
-    ├── config.sh.example
-    │
-    ├── logs/
-    │   └── health.log
-    │
-    ├── reports/
-    │   └── report_YYYY-MM-DD.html
-    │
-    ├── screenshots/
-    │   ├── monitor-output.png
-    │   ├── html-report.png
-    │   ├── slack-alert.png
-    │   └── github-repo.png
-    │
-    ├── .gitignore
-    └── README.md
+```text
+sre-health-monitor/
+│
+├── config/
+│   └── thresholds.conf.example
+│
+├── monitor.sh
+├── alert.sh
+├── report.sh
+├── install.sh
+├── config.sh.example
+│
+├── logs/
+│   └── health.log
+│
+├── reports/
+│   └── report_YYYY-MM-DD.html
+│
+├── screenshots/
+│   ├── monitor-output.png
+│   ├── html-report.png
+│   ├── slack-alert.png
+│   └── github-repo.png
+│
+├── .gitignore
+└── README.md
+```
 
 **Note:** `config.sh` and `config/thresholds.conf` are local configuration files and should not be committed to Git. Example configuration files provide safe templates.
 
@@ -198,14 +203,18 @@ Dry-run mode simulates alert notifications without sending actual Slack messages
 
 Execute:
 
-    ./monitor.sh --dry-run
+```bash
+./monitor.sh --dry-run
+```
 
 Example output:
 
-    [DRY-RUN] Would send alert:
+```text
+[DRY-RUN] Would send alert:
 
-    HIGH DISK ALERT
-    Disk /mnt/c is 96% full.
+HIGH DISK ALERT
+Disk /mnt/c is 96% full.
+```
 
 This allows alert behavior to be tested safely without requiring a Slack webhook.
 
@@ -215,18 +224,24 @@ The project implements a per-alert cooldown mechanism to prevent repeated notifi
 
 Default cooldown:
 
-    30 minutes
+```text
+30 minutes
+```
 
 Alert state is maintained in:
 
-    /tmp/health_monitor.state
+```text
+/tmp/health_monitor.state
+```
 
 During the cooldown period, repeated alerts for the same metric are suppressed.
 
 Example:
 
-    [COOLDOWN] HIGH DISK ALERT suppressed.
-    Try again after cooldown.
+```text
+[COOLDOWN] HIGH DISK ALERT suppressed.
+Try again after cooldown.
+```
 
 Dry-run alert state is maintained separately.
 
@@ -251,15 +266,19 @@ The monitoring script supports the following command-line arguments:
 
 ### Help Output
 
-    Usage: ./monitor.sh [--dry-run] [--config PATH] [--help]
+```text
+Usage: ./monitor.sh [--dry-run] [--config PATH] [--help]
 
-    --dry-run     Simulate alerts without sending Slack messages
-    --config      Specify a configuration file
-    --help        Display this help message
+--dry-run     Simulate alerts without sending Slack messages
+--config      Specify a configuration file
+--help        Display this help message
+```
 
 ### Custom Configuration Example
 
-    ./monitor.sh --config /path/to/thresholds.conf --dry-run
+```bash
+./monitor.sh --config /path/to/thresholds.conf --dry-run
+```
 
 ---
 
@@ -275,25 +294,33 @@ The monitoring script supports the following command-line arguments:
 
 ### Step 1: Clone the Repository
 
-    git clone https://github.com/Chandrashekhar-cloud/sre-health-monitor.git
+```bash
+git clone https://github.com/Chandrashekhar-cloud/sre-health-monitor.git
 
-    cd sre-health-monitor
+cd sre-health-monitor
+```
 
 ### Step 2: Create Local Configuration Files
 
 Copy the sample runtime configuration:
 
-    cp config.sh.example config.sh
+```bash
+cp config.sh.example config.sh
+```
 
 Copy the sample monitoring thresholds:
 
-    cp config/thresholds.conf.example config/thresholds.conf
+```bash
+cp config/thresholds.conf.example config/thresholds.conf
+```
 
 ### Step 3: Configure Monitoring Thresholds
 
 Open the configuration file:
 
-    nano config/thresholds.conf
+```bash
+nano config/thresholds.conf
+```
 
 Update the required thresholds.
 
@@ -301,19 +328,27 @@ If Slack notifications are needed, configure your private webhook URL in the loc
 
 ### Step 4: Make Scripts Executable
 
-    chmod +x *.sh
+```bash
+chmod +x *.sh
+```
 
 ### Step 5: Run the Monitoring Script
 
-    ./monitor.sh
+```bash
+./monitor.sh
+```
 
 ### Step 6: Generate the HTML Report
 
-    ./report.sh
+```bash
+./report.sh
+```
 
 ### Step 7: Test Alert Functionality
 
-    ./monitor.sh --dry-run
+```bash
+./monitor.sh --dry-run
+```
 
 ---
 
@@ -323,37 +358,39 @@ The monitoring script displays information about the current system health, incl
 
 ### Example Output
 
-    ================================================
-              Linux SRE Health Monitor
-    ================================================
+```text
+================================================
+          Linux SRE Health Monitor
+================================================
 
-    --- System Metrics ---
+--- System Metrics ---
 
-    CPU Usage       : 4%  [OK]
-    RAM Usage       : 59% [OK]
-    Load Average    : 1.60
+CPU Usage       : 4%  [OK]
+RAM Usage       : 59% [OK]
+Load Average    : 1.60
 
-    --- Disk Usage ---
+--- Disk Usage ---
 
-    /               : 1%  [OK]
-    /mnt/c          : 96% [CRITICAL]
+/               : 1%  [OK]
+/mnt/c          : 96% [CRITICAL]
 
-    --- Network Statistics ---
+--- Network Statistics ---
 
-    Network RX      : 0.0 MB
-    Network TX      : 0.0 MB
+Network RX      : 0.0 MB
+Network TX      : 0.0 MB
 
-    --- Process Information ---
+--- Process Information ---
 
-    Running Processes: 58
+Running Processes: 58
 
-    --- Alert Management ---
+--- Alert Management ---
 
-    [COOLDOWN] HIGH DISK ALERT suppressed.
+[COOLDOWN] HIGH DISK ALERT suppressed.
 
-    --- Report Generation ---
+--- Report Generation ---
 
-    HTML report generated successfully.
+HTML report generated successfully.
+```
 
 *Sample values are illustrative and depend on the monitored system.*
 
@@ -402,13 +439,17 @@ The project was validated using the following checks:
 
 ### Bash Syntax Validation
 
-    bash -n monitor.sh
-    bash -n alert.sh
-    bash -n report.sh
+```bash
+bash -n monitor.sh
+bash -n alert.sh
+bash -n report.sh
+```
 
 ### ShellCheck Validation
 
-    shellcheck *.sh
+```bash
+shellcheck *.sh
+```
 
 All shell scripts passed ShellCheck validation during project testing.
 
