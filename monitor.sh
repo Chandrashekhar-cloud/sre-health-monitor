@@ -119,7 +119,7 @@ check_ram() {
 check_disk() {
 echo -e " Disk Usage:"
 
-df -P | tail -n +2 | awk '$NF != "/Docker/host"' | while read -r fs blocks used avail pct mnt; do
+df -P | tail -n +2 | awk '$NF != "/Docker/host"' | while read -r fs _ used _ pct mnt; do
 
 # Ignore virtual, read-only and special filesystems
 case "$fs" in
