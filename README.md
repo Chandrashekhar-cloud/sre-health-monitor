@@ -113,6 +113,7 @@ This project automates Linux system health monitoring through Bash scripts, prov
                        |
                        v
                   health.log
+    ---
 
 ## 📂 Project Structure
 
