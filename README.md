@@ -492,3 +492,18 @@ GitHub: https://github.com/Chandrashekhar-cloud
 ---
 
 ⭐ If you find this project useful, consider giving it a star!
+
+
+---
+
+## Load-per-Core Alerting
+
+The monitor calculates load per CPU core and compares it against `LOAD_THRESHOLD`. When exceeded, it generates a HIGH LOAD ALERT using the existing cooldown mechanism.
+
+## Automated Cron Monitoring
+
+The monitor can run automatically every five minutes using Cron. The scheduled WSL test uses dry-run mode to avoid sending Slack notifications.
+
+```cron
+*/5 * * * * cd /path/to/sre-health-monitor && /bin/bash monitor.sh --dry-run
+```

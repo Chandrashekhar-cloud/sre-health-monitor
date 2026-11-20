@@ -149,12 +149,23 @@ done
 
 # Load average check
 check_load() {
-    local load cores
+    local load cores per_core icon
     load=$(uptime | awk -F"load average:" '{print $2}' | cut -d, -f1 | tr -d " ")
     cores=$(nproc)
+    per_core=$(awk -v avg="$load" -v cores="$cores" 'BEGIN {printf "%.2f", avg/cores}')
 
-    echo -e " Load Average : ${BOLD}${load}${RESET} (${cores} cores)"
-    log "INFO" "Load: $load Cores: $cores"
+    icon=$(awk -v value="$per_core" -v threshold="$LOAD_THRESHOLD" 'BEGIN {
+        if (value >= threshold) print "CRITICAL"
+        else print "OK"
+    }')
+
+    echo -e " Load Average : ${BOLD}${load}${RESET} (${cores} cores, ${per_core} per core) [${icon}]"
+    log "INFO" "Load: $load Cores: $cores Load/Core: $per_core"
+
+    if [ "$icon" = "CRITICAL" ]; then
+        send_slack_alert "HIGH LOAD ALERT" "Load per core is ${per_core} on $SERVER_NAME (threshold: ${LOAD_THRESHOLD})"
+        log "ALERT" "Load breach: ${per_core} per core"
+    fi
 }
 
 # Network stats
